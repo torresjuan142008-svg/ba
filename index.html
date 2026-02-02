@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Te quiero mucho ❤</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at top, #ffe3ef, #f7b6cf);
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    /* Mensaje */
+    .message{
+      position: fixed;
+      top: 12%;
+      width: 100%;
+      text-align: center;
+      font-size: 32px;
+      color: #ffffff;
+      text-shadow: 0 4px 12px rgba(0,0,0,.25);
+      opacity: 0;
+      animation: fadeIn 3s ease forwards;
+      animation-delay: 3s;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* Contenedor del ramo */
+    .bouquet {
+      position: relative;
+      width: 320px;
+      height: 520px;
+      margin-bottom: 40px;
+      animation: bouquetGrow 4s ease-out forwards;
+      transform: scale(0);
+      transform-origin: bottom center;
+    }
+
+    @keyframes bouquetGrow {
+      to { transform: scale(1); }
+    }
+
+    /* Tallo */
+    .stem {
+      position: absolute;
+      bottom: 0;
+      width: 8px;
+      height: 260px;
+      background: linear-gradient(#2e7d32, #66bb6a);
+      border-radius: 4px;
+      transform-origin: bottom center;
+      animation: sway 5s ease-in-out infinite;
+    }
+
+    /* Flor */
+    .tulip {
+      position: absolute;
+      bottom: 240px;
+      width: 90px;
+      height: 110px;
+      animation: bloom 3.5s ease-out forwards, sway 6s ease-in-out infinite;
+    }
+
+    /* Pétalos */
+    .petal {
+      position: absolute;
+      bottom: 0;
+      width: 45px;
+      height: 90px;
+      background: linear-gradient(#f06292, #ec407a);
+      border-radius: 50% 50% 40% 40%;
+      transform-origin: bottom center;
+      opacity: 0;
+      animation: petalOpen 3.5s ease-out forwards;
+    }
+
+    .petal.left {
+      left: 0;
+      transform: rotate(-15deg);
+    }
+
+    .petal.center {
+      left: 22px;
+      background: linear-gradient(#f48fb1, #ec407a);
+      z-index: 2;
+    }
+
+    .petal.right {
+      right: 0;
+      transform: rotate(15deg);
+    }
+
+    @keyframes bloom {
+      0% { transform: scale(0.4); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes petalOpen {
+      to { opacity: 1; }
+    }
+
+    @keyframes sway {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(2deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    /* Posiciones del ramo */
+    .t1 { left: 40%; animation-delay: 0s; }
+    .t2 { left: 50%; animation-delay: .4s; }
+    .t3 { left: 60%; animation-delay: .8s; }
+    .t4 { left: 45%; bottom: 220px; animation-delay: 1.2s; }
+    .t5 { left: 55%; bottom: 220px; animation-delay: 1.6s; }
+
+    /* Botón música */
+    button {
+      position: fixed;
+      bottom: 20px;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 25px;
+      background: #ec407a;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="message">Te quiero mucho ❤</div>
+
+  <div class="bouquet">
+    <div class="stem" style="left:40%"></div>
+    <div class="tulip t1">
+      <div class="petal left"></div>
+      <div class="petal center"></div>
+      <div class="petal right"></div>
+    </div>
+
+    <div class="stem" style="left:50%"></div>
+    <div class="tulip t2">
+      <div class="petal left"></div>
+      <div class="petal center"></div>
+      <div class="petal right"></div>
+    </div>
+
+    <div class="stem" style="left:60%"></div>
+    <div class="tulip t3">
+      <div class="petal left"></div>
+      <div class="petal center"></div>
+      <div class="petal right"></div>
+    </div>
+
+    <div class="stem" style="left:45%"></div>
+    <div class="tulip t4">
+      <div class="petal left"></div>
+      <div class="petal center"></div>
+      <div class="petal right"></div>
+    </div>
+
+    <div class="stem" style="left:55%"></div>
+    <div class="tulip t5">
+      <div class="petal left"></div>
+      <div class="petal center"></div>
+      <div class="petal right"></div>
+    </div>
+  </div>
+
+  <audio id="music" src="music.mp3" preload="auto"></audio>
+  <button onclick="toggleMusic()">▶ Reproducir música</button>
+
+  <script>
+    const music = document.getElementById('music');
+    let playing = false;
+
+    function toggleMusic() {
+      if (!playing) {
+        music.play();
+        playing = true;
+      } else {
+        music.pause();
+        playing = false;
+      }
+    }
+  </script>
+
+</body>
+</html>
